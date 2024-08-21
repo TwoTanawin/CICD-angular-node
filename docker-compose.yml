@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./movie-crud-backend  # Path to your backend Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+
+  frontend:
+    build:
+      context: ./movie-crud-frontend  # Path to your frontend Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
